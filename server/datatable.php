@@ -1,5 +1,5 @@
 <?php
-include("./server/serverconnection.php");
+  include("serverconnection.php");
 ?>
 
 <!DOCTYPE html>
@@ -9,13 +9,13 @@ include("./server/serverconnection.php");
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data fetch from Database</title>
-  <link rel="stylesheet" href="style2.css" />
+  <link rel="stylesheet" href="../allstyles/style2.css" />
 </head>
 
 <body>
 <div class="navbar">
         <ul>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="../index.php">Home</a></li>
             <li><a href="datatable.php">Data Table</a></li>
         </ul>
     </div>

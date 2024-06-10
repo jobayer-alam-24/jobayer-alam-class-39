@@ -31,13 +31,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./allstyles/style.css">
 </head>
 <body>
   <div class="navbar">
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="datatable.php">Data Table</a></li>
+            <li><a href="./server/datatable.php">Data Table</a></li>
         </ul>
     </div>
     <div class="container">
