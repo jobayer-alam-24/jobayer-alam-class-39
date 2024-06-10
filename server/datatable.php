@@ -1,5 +1,5 @@
 <?php
-  include("serverconnection.php");
+include("serverconnection.php");
 ?>
 
 <!DOCTYPE html>
@@ -13,12 +13,12 @@
 </head>
 
 <body>
-<div class="navbar">
-        <ul>
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="datatable.php">Data Table</a></li>
-        </ul>
-    </div>
+  <div class="navbar">
+    <ul>
+      <li><a href="../index.php">Home</a></li>
+      <li><a href="datatable.php">Data Table</a></li>
+    </ul>
+  </div>
   <h2>Database Table</h2>
 
   <div class="container">
@@ -30,6 +30,7 @@
           <th>Phone Number</th>
           <th>Email</th>
           <th>Password</th>
+          <th style="background-color: #cc1f47;">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -53,12 +54,19 @@
             <td>" . $phone_number . "</td>
             <td>" . $email . "</td>
             <td>" . $password . "</td>
+            <td id='action'>
+              <form method='post' action='delete.php'>
+                <input type='hidden' name='id' value='".$id."'/>
+                <button type='submit' class='del_btn' name='delete'>Delete</button>
+              </form>
+            </td>
           </tr>";
           }
           echo "</tbody>";
         }
         ?>
     </table>
+
   </div>
 </body>
 
