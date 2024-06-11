@@ -11,7 +11,8 @@
         $confirm_pass = $_POST["passConfirm"];
 
         if(empty($full_name) || empty($phone_number) || empty($email) || empty($passwordCheck) || empty($confirm_pass)){
-            echo "Please fill out all the fields!";
+            $message = "Empty Values are not allowed!";
+              echo "<script type='text/javascript'>alert('$message');</script>";
         }else{
             $query = "INSERT INTO user_signup_info(name, phone_number, email, password, confirm_password) VALUES ('$full_name','$phone_number','$email','$passwordCheck','$confirm_pass')";
 
@@ -46,7 +47,7 @@
         <form action="index.php" method="post" enctype="multipart/form-data" id="regis-main-form">
             <div>
                 <label for="name">Full Name</label>
-                <input type="text" name="name" id="name" autofocus required placeholder="Enter your full name..">
+                <input type="text" name="name" id="name" autofocus  placeholder="Enter your full name..">
             </div>
             <div>
                 <label for="p-number">Phone number</label>

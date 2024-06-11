@@ -41,28 +41,38 @@ include("serverconnection.php");
         if (mysqli_num_rows($fetchAuthors) > 0) {
           while ($dataAsRow = mysqli_fetch_assoc($fetchAuthors)) {
 
-            $id = $dataAsRow['id'];
-            $name = $dataAsRow['name'];
-            $phone_number = $dataAsRow['phone_number'];
-            $email = $dataAsRow['email'];
-            $password = $dataAsRow['password'];
-
-            echo
-            "<tr>
-            <td>" . $id . "</td>
-            <td>" . $name . "</td>
-            <td>" . $phone_number . "</td>
-            <td>" . $email . "</td>
-            <td>" . $password . "</td>
-            <td id='action'>
-              <form method='post' action='delete.php'>
-                <input type='hidden' name='id' value='".$id."'/>
-                <button type='submit' class='del_btn' name='delete'>Delete</button>
-              </form>
-            </td>
-          </tr>";
+            $id = htmlspecialchars($dataAsRow['id']);
+            $name = htmlspecialchars($dataAsRow['name']);
+            $phone_number = htmlspecialchars($dataAsRow['phone_number']);
+            $email = htmlspecialchars($dataAsRow['email']);
+            $password = htmlspecialchars($dataAsRow['password']);
+            
+              echo
+              "<tr>
+              <td>" . $id . "</td>
+              <td>" . $name . "</td>
+              <td>" . $phone_number . "</td>
+              <td>" . $email . "</td>
+              <td>" . $password . "</td>
+              <td id='action'>
+                <form method='post' action='delete.php'>
+                  <input type='hidden' name='id' value='" . $id . "'/>
+                  <button type='submit' class='del_btn' name='delete'>Delete</button>
+                </form>
+              </td>
+            </tr>";
           }
           echo "</tbody>";
+        } else {
+          echo "<tr><td colspan='6'>No records found!</td></tr>";
+        }
+
+        function test_input($data)
+        {
+          $data = trim($data);
+          $data = stripslashes($data);
+          $data = htmlspecialchars($data);
+          return $data;
         }
         ?>
     </table>
