@@ -88,6 +88,21 @@ tr:nth-child(odd) {
   border: none;
   transition: 0.2s ease-out;
 }
+.edit_btn{
+  width: 100%;
+  height: 100%;
+  padding: 7%;
+  margin: 0;
+  background-color: rgb(9, 107, 53);
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  border: none;
+  transition: 0.2s ease-out;
+}
+.edit_btn:hover{
+  background-color: rgb(24, 97, 9);
+}
 .del_btn:hover{
   background-color: red;
 }

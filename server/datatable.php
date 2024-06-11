@@ -30,7 +30,8 @@ include("serverconnection.php");
           <th>Phone Number</th>
           <th>Email</th>
           <th>Password</th>
-          <th style="background-color: #cc1f47;">Action</th>
+          <th style="background-color: #25c41f;">Change Action</th>
+          <th style="background-color: #cc1f47;">Remove Action</th>
         </tr>
       </thead>
       <tbody>
@@ -54,6 +55,12 @@ include("serverconnection.php");
               <td>" . $phone_number . "</td>
               <td>" . $email . "</td>
               <td>" . $password . "</td>
+              <td id='action'>
+                <form method='post' action='edit.php'>
+                  <input type='hidden' name='id' value='" . $id . "'/>
+                  <button type='submit' class='edit_btn' name='edit'>Edit</button>
+                </form>
+              </td>
               <td id='action'>
                 <form method='post' action='delete.php'>
                   <input type='hidden' name='id' value='" . $id . "'/>
