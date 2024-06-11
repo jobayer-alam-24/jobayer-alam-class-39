@@ -66,14 +66,6 @@ include("serverconnection.php");
         } else {
           echo "<tr><td colspan='6'>No records found!</td></tr>";
         }
-
-        function test_input($data)
-        {
-          $data = trim($data);
-          $data = stripslashes($data);
-          $data = htmlspecialchars($data);
-          return $data;
-        }
         ?>
     </table>
 
