@@ -1,7 +1,19 @@
 <?php
 include("serverconnection.php");
 ?>
+<?php
 
+    $id = $_POST["id"];
+    $query = 'SELECT * FROM user_signup_info WHERE id = ' . $id;
+    $result = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $name = $row['name'];
+        $phoneNumber = $row['phone_number'];
+        $email = $row['email'];
+        $password = $row['password'];
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,98 +22,64 @@ include("serverconnection.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data fetch from Database</title>
   <link rel="stylesheet" href="../allstyles/style2.css" />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-  <div class="navbar">
-    <ul>
-      <li><a href="../index.php">Home</a></li>
-      <li><a href="datatable.php">Data Table</a></li>
-    </ul>
-  </div>
-  <h2>Edit Database Table</h2>
-
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th style="background-color: #25c41f;">Change Action</th>
-          <th style="background-color: #cc1f47;">Remove Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        $query = "SELECT * FROM user_signup_info";
-        $fetchAuthors = mysqli_query($conn, $query);
-        if (mysqli_num_rows($fetchAuthors) > 0) {
-          while ($dataAsRow = mysqli_fetch_assoc($fetchAuthors)) {
-
-            $id = htmlspecialchars($dataAsRow['id']);
-            $name = htmlspecialchars($dataAsRow['name']);
-            $phone_number = htmlspecialchars($dataAsRow['phone_number']);
-            $email = htmlspecialchars($dataAsRow['email']);
-            $password = htmlspecialchars($dataAsRow['password']);
-
-            echo
-            "<tr>
-              <td id='action'><input class='edit_fields fs' type='text' name='id' value='" . $id . "' readonly /></td>
-              <td id='action'><input class='edit_fields fs' type='text' name='name' value='" . $name . "' /></td>
-              <td id='action'><input class='edit_fields fs' type='text' name='phone_number' value='" . $phone_number . "' /></td>
-              <td id='action'><input class='edit_fields fs' type='email' name='email' value='" . $email . "' /></td>
-              <td id='action'><input class='edit_fields fs' type='text' name='password' value='" . $password . "' /></td>
-              <td id='action'>
-                <form method='post' action='edit.php'>
-                  <input type='hidden' name='id' value='" . $id . "'/>
-                  <button type='submit' class='edit_btn' name='edit'>Edit</button>
-                </form>
-              </td>
-              <td id='action'>
-                <form method='post' action='delete.php'>
-                  <input type='hidden' name='id' value='" . $id . "'/>
-                  <button type='submit' class='del_btn' name='delete'>Delete</button>
-                </form>
-              </td>
-            </tr>";
-          }
-        } else {
-          echo "<tr><td colspan='7'>No records found!</td></tr>";
-        }
-        ?>
-      </tbody>
-    </table>
-  </div>
-
-  <form action="#" method="post">
-    <div class="container">
-      <button class="save-btn" type="submit" name="save">Save Changes</button>
+<body class="bg-success mb-5">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1dcc28;">
+        <div class="container">
+            <!-- Brand removed -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" style="font-size: 1.2rem;" href="../index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" style="font-size: 1.2rem;" href="datatable.php">Data Table</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Heading -->
+    <div class="container mt-5">
+        <h2 class="text-center text-white">Edit Database Form</h2>
     </div>
-  </form>
+
+    <!-- Registration Form -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center bg-info text-white">
+                        <h2>Edit Data</h2>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="fullname">Full Name</label>
+                                <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $name; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $phoneNumber; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="<?php echo $email; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" class="form-control" id="password" name="password" value="<?php echo $password; ?>" required>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-block">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
-<?php
-
-if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["submit"])) {
-  $full_name = $_POST["name"];
-  $phone_number = $_POST["p-number"];
-  $email = $_POST["mail"];
-  $passwordCheck = $_POST["password"];
-
-
-
-  $query = "UPDATE user_signup_info SET name = '$full_name', phone_number = '$phone_number', email = '$email', password = '' WHERE id = $id";;
-
-  $sendData = mysqli_query($conn, $query) or die(mysqli_error($conn));
-  if ($sendData) {
-    header("Location: index.php");
-  } else {
-    echo "Failed! to send Data";
-    die();
-  }
-}
-?>

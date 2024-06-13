@@ -3,6 +3,59 @@ body {
   background-color: rgb(10, 107, 47);
 }
 
+.form-container {
+  background-color: #16c2e0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.form-container h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #94c4cc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: rgb(63, 167, 110);
+}
+
+/* Additional global styles */
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -25,19 +78,15 @@ td {
 
 th {
   background-color: #122dc7;
-  /* Set the background color for the header row */
   color: white;
-  /* Set the text color for the header row */
 }
 
 tr:nth-child(even) {
   background-color: #021b2c;
-  /* Set the background color for alternate rows */
 }
 
 tr:nth-child(odd) {
   background-color: #1ba7b1;
-  /* Set the background color for alternate rows */
 }
 
 .navbar {
@@ -45,10 +94,8 @@ tr:nth-child(odd) {
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  /* Ensures even spacing between items */
   width: 50%;
   margin: 0 auto;
-  /* Center the navbar */
 }
 
 .navbar ul {
@@ -61,7 +108,6 @@ tr:nth-child(odd) {
 
 .navbar li {
   flex: 1;
-  /* Ensures equal width for each item */
 }
 
 .navbar li a {
@@ -88,7 +134,8 @@ tr:nth-child(odd) {
   border: none;
   transition: 0.2s ease-out;
 }
-.edit_btn{
+
+.edit_btn {
   width: 100%;
   height: 100%;
   padding: 7%;
@@ -100,16 +147,20 @@ tr:nth-child(odd) {
   border: none;
   transition: 0.2s ease-out;
 }
-.edit_btn:hover{
+
+.edit_btn:hover {
   background-color: rgb(24, 97, 9);
 }
-.del_btn:hover{
+
+.del_btn:hover {
   background-color: red;
 }
-#action{
+
+#action {
   padding: 0;
   margin: 0;
 }
+
 .edit_fields {
   width: 100%;
   height: 100%;
@@ -121,30 +172,11 @@ tr:nth-child(odd) {
   letter-spacing: 1px;
   box-sizing: border-box;
 }
-.save-btn {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 8px;
-  transition-duration: 0.4s;
-}
 
-.save-btn:hover {
-  background-color: rgb(63, 167, 110);
-  color: black;
-  border: 1px solid #4CAF50;
-  box-sizing: border-box;
+.navbar-nav {
+  width: 100%;
 }
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20vh;
+.nav-item {
+  flex: 0 0 50%;
+  text-align: center;
 }
