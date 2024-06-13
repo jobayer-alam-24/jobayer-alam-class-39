@@ -28,7 +28,9 @@ include("serverconnection.php");
             header("Location: datatable.php");    
         }
         else{
-           
+            $message = "There is something wrong with the Updation";
+            echo '<script>alert("' . $message . '")</script>';
+            exit();
         }
     }
 ?>
