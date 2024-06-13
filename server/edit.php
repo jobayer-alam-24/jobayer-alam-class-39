@@ -2,17 +2,35 @@
 include("serverconnection.php");
 ?>
 <?php
-
     $id = $_POST["id"];
     $query = 'SELECT * FROM user_signup_info WHERE id = ' . $id;
     $result = mysqli_query($conn, $query);
     while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
         $name = $row['name'];
         $phoneNumber = $row['phone_number'];
         $email = $row['email'];
         $password = $row['password'];
     }
 
+    //update query....
+    if(isset($_POST['submit'])) {
+        $id = $_POST['id'];
+        $name = $_POST['fullname'];
+        $phoneNumber = $_POST['phone'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $query = "UPDATE user_signup_info SET name = '$name', phone_number = '$phoneNumber', email = '$email', password = '$password' WHERE id = $id";
+
+        $submit = mysqli_query($conn, $query);
+        if($submit){
+            header("Location: datatable.php");    
+        }
+        else{
+           
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +74,11 @@ include("serverconnection.php");
                         <h2>Edit Data</h2>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                            <div class="form-group">
+                                <label for="id">ID</label>
+                                <input type="text" class="form-control" id="id" name="id" value="<?php echo $id; ?>" readonly required>
+                            </div>
                             <div class="form-group">
                                 <label for="fullname">Full Name</label>
                                 <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $name; ?>" required>
@@ -73,7 +95,7 @@ include("serverconnection.php");
                                 <label for="password">Password</label>
                                 <input type="text" class="form-control" id="password" name="password" value="<?php echo $password; ?>" required>
                             </div>
-                            <button type="submit" class="btn btn-info btn-block">Register</button>
+                            <button type="submit" name="submit" class="btn btn-info btn-block">Register</button>
                         </form>
                     </div>
                 </div>
